@@ -219,7 +219,97 @@
 
 
 </script>
+<style>
+    /* General Styling */
+    body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    input[type="radio"] {
+        margin-right: 5px;
+    }
+
+
+    /* Button Styling */
+    button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    button:disabled {
+        background-color: #ddd;
+        color: #999;
+        cursor: default;
+    }
+
+    /* Container for question and options */
+    .question-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+
+    /* Loading message */
+    .loading {
+        text-align: center;
+        font-style: italic;
+        color: #777;
+    }
+
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .question-container {
+            padding: 15px;
+        }
+
+        button {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+    }
+
+
+</style>
+
 {#if questions.length > 0 && currentQuestion < questions.length}
+    <div class="question-container">
     <h2>{questions[currentQuestion]}</h2>
     <p>请选择一个选项:</p>
     {#each options as option, index}
@@ -240,7 +330,7 @@
     {:else}
         <button on:click={submitAnswers}>提交答案</button>
     {/if}
-
+    </div>
 {:else if questions.length > 0}
     <button on:click={submitAnswers}>提交答案</button>
 {:else}
